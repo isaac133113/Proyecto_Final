@@ -9,7 +9,8 @@ import java.util.Scanner;
 
 /**
  * Clase principal de la aplicación.
- * Gestiona la conexión a la base de datos y muestra el menú principal
+ * Gestiona la conexión a la base de datos y muestra el menú principal1
+ *
  * para acceder a la gestión de reservas, empleados y salas.
  */
 static final String DB_URL = "jdbc:mysql://localhost:3306/reservas_salas?useSSL=false&serverTimezone=UTC";
