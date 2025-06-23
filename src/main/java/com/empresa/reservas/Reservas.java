@@ -19,7 +19,7 @@ public class Reservas {
             while (!salir) {
                 System.out.println("\n--- Menú de gestión de salas ---");
                 System.out.println("1. Crear sala");
-                System.out.println("2. Leer salas");
+                System.out.println("2. Listar salas");
                 System.out.println("3. Actualizar sala");
                 System.out.println("4. Eliminar sala");
                 System.out.println("5. Salir");
