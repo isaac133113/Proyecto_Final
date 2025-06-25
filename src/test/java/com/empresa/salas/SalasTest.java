@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.Scanner;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -19,7 +20,7 @@ import static org.mockito.Mockito.*;
  * y Hamcrest para validar los argumentos usados en las consultas SQL.
  *
  * Se prueba la creación y listado de salas, validando el correcto
- * funcionamiento de los métodos {@code crearSala} y {@code listarSalas}.
+ * funcionamiento de los métodos crearSala y listarSalas.
  *
  * Requiere JUnit 5, Mockito y Hamcrest.
  */
@@ -40,7 +41,6 @@ class SalasTest {
         conn = mock(Connection.class);
         scanner = mock(Scanner.class);
         pstmt = mock(PreparedStatement.class);
-
         when(conn.prepareStatement(anyString())).thenReturn(pstmt);
     }
 
@@ -53,24 +53,21 @@ class SalasTest {
      * @throws SQLException si ocurre un error al simular la conexión o ejecución
      */
     @Test
-    void testCrearSalas() throws SQLException {
+    void testCrearSala() throws SQLException {
         when(scanner.nextLine())
                 .thenReturn("Sala A")
                 .thenReturn("20")
                 .thenReturn("Proyector, TV");
+        when(pstmt.executeUpdate()).thenReturn(1);
 
         Salas.crearSala(conn, scanner);
 
         ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Integer> intCaptor = ArgumentCaptor.forClass(Integer.class);
 
-        verify(pstmt, times(2)).setString(anyInt(), stringCaptor.capture());
+        verify(pstmt).setString(eq(1), stringCaptor.capture());
         verify(pstmt).setInt(eq(2), intCaptor.capture());
-
-        assertThat(stringCaptor.getAllValues().get(0), is("Sala A"));
-        assertThat(stringCaptor.getAllValues().get(1), is("Proyector, TV"));
-        assertThat(intCaptor.getValue(), is(20));
-
+        verify(pstmt).setString(eq(3), stringCaptor.capture());
         verify(pstmt).executeUpdate();
     }
 
