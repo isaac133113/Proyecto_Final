@@ -34,7 +34,7 @@ public static void main(String[] args) {
 
             if (!scanner.hasNextLine()) {
                 System.out.println("No hay más entrada, saliendo...");
-                break; // Sale del while y termina programa
+                break; // Sale del while y termina programaº
             }
             String entrada = scanner.nextLine();
             int opcion;
@@ -47,9 +47,9 @@ public static void main(String[] args) {
             }
 
             switch (opcion) {
-                case 1 -> Reservas.mostrarMenu(conn);
-                case 2 -> Empleados.mostrarMenu(conn);
-                case 3 -> Salas.mostrarMenu(conn);
+                case 1 -> Reservas.mostrarMenu(conn,scanner);
+                case 2 -> Empleados.mostrarMenu(conn,scanner);
+                case 3 -> Salas.mostrarMenu(conn, scanner);
                 case 4 -> {
                     salir = true;
                     System.out.println("Saliendo...");

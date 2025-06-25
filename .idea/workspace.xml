@@ -8,22 +8,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="tests">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_31_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_31_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_31__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_32_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_32_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_32__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Documentacion/Documentacion_Scrum_[IsaacBonetOlives].docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/salas/Salas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/salas/Salas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/empleados/EmpleadosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/empleados/EmpleadosTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/Reservas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/salas/SalasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/salas/SalasTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/empleados/Empleados.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/empleados/Empleados.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/reservas/Reservas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/reservas/Reservas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/salas/Salas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/salas/Salas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/empresa/empleados/EmpleadosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/empresa/empleados/EmpleadosTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/empresa/reservas/Reservas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/empresa/salas/SalasTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/empresa/salas/SalasTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,10 +54,11 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {}
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/isaac133113/Proyecto_Final.git&quot;,
@@ -71,7 +76,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -95,7 +100,16 @@
     "JUnit.EmpleadosTest.testCrearEmpleado.executor": "Run",
     "JUnit.EmpleadosTest.testCrearEmpleados.executor": "Run",
     "JUnit.EmpleadosTest.testMostrarEmpleados.executor": "Run",
+    "JUnit.ReservasTest.crearReservaConConflicto.executor": "Run",
+    "JUnit.ReservasTest.executor": "Run",
+    "JUnit.ReservasTest.listarReservas.executor": "Run",
+    "JUnit.ReservasTest.testCrearReservaSinConflicto.executor": "Run",
+    "JUnit.ReservasTest.testCrearReserva_ConConflicto.executor": "Run",
+    "JUnit.ReservasTest.testListarReservas.executor": "Run",
+    "JUnit.ReservasTest.testMostrarEmpleados.executor": "Run",
+    "JUnit.ReservasTest.testMostrarReservas.executor": "Run",
     "JUnit.SalasTest.executor": "Run",
+    "JUnit.SalasTest.testCrearSalaConExcepcion.executor": "Run",
     "JUnit.SalasTest.testMostrarSalas.executor": "Run",
     "JavaClassFindUsagesOptions.isDerivedClasses": "true",
     "JavaClassFindUsagesOptions.isFieldsUsages": "true",
@@ -103,9 +117,12 @@
     "Maven.reserva-salas [compile].executor": "Run",
     "Maven.reserva-salas [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "Testing",
+    "ignore.preview.features.used": "true",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Usuari/IdeaProjects/Proyecto_Final/src/test/java",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -116,7 +133,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -135,16 +152,8 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in reserva-salas">
-    <configuration name="All in reserva-salas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="reserva-salas" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EmpleadosTest.testCrearEmpleado" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="EmpleadosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reserva-salas" />
       <extension name="coverage">
         <pattern>
@@ -154,45 +163,59 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.empresa.empleados" />
       <option name="MAIN_CLASS_NAME" value="com.empresa.empleados.EmpleadosTest" />
-      <option name="METHOD_NAME" value="testCrearEmpleado" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmpleadosTest.testCrearEmpleados" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReservasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reserva-salas" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.empresa.empleados.*" />
+          <option name="PATTERN" value="com.empresa.reservas.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.empresa.empleados" />
-      <option name="MAIN_CLASS_NAME" value="com.empresa.empleados.EmpleadosTest" />
-      <option name="METHOD_NAME" value="testCrearEmpleados" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.empresa.reservas" />
+      <option name="MAIN_CLASS_NAME" value="com.empresa.reservas.ReservasTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmpleadosTest.testMostrarEmpleados" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReservasTest.testCrearReservaSinConflicto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reserva-salas" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.empresa.empleados.*" />
+          <option name="PATTERN" value="com.empresa.reservas.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.empresa.empleados" />
-      <option name="MAIN_CLASS_NAME" value="com.empresa.empleados.EmpleadosTest" />
-      <option name="METHOD_NAME" value="testMostrarEmpleados" />
+      <option name="PACKAGE_NAME" value="com.empresa.reservas" />
+      <option name="MAIN_CLASS_NAME" value="com.empresa.reservas.ReservasTest" />
+      <option name="METHOD_NAME" value="testCrearReservaSinConflicto" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReservasTest.testListarReservas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="reserva-salas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.empresa.reservas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.empresa.reservas" />
+      <option name="MAIN_CLASS_NAME" value="com.empresa.reservas.ReservasTest" />
+      <option name="METHOD_NAME" value="testListarReservas" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalasTest.testCrearSalaConExcepcion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reserva-salas" />
       <extension name="coverage">
         <pattern>
@@ -202,7 +225,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.empresa.salas" />
       <option name="MAIN_CLASS_NAME" value="com.empresa.salas.SalasTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testCrearSalaConExcepcion" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -220,11 +244,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in reserva-salas" />
-        <item itemvalue="JUnit.EmpleadosTest.testCrearEmpleado" />
-        <item itemvalue="JUnit.EmpleadosTest.testCrearEmpleados" />
-        <item itemvalue="JUnit.EmpleadosTest.testMostrarEmpleados" />
-        <item itemvalue="JUnit.SalasTest" />
+        <item itemvalue="JUnit.SalasTest.testCrearSalaConExcepcion" />
+        <item itemvalue="JUnit.EmpleadosTest" />
+        <item itemvalue="JUnit.ReservasTest" />
+        <item itemvalue="JUnit.ReservasTest.testCrearReservaSinConflicto" />
+        <item itemvalue="JUnit.ReservasTest.testListarReservas" />
       </list>
     </recent_temporary>
   </component>
@@ -253,6 +277,11 @@
       <workItem from="1750680166591" duration="8348000" />
       <workItem from="1750690562888" duration="2307000" />
       <workItem from="1750834584514" duration="9596000" />
+      <workItem from="1750845362862" duration="151000" />
+      <workItem from="1750845527512" duration="590000" />
+      <workItem from="1750846630890" duration="1263000" />
+      <workItem from="1750850994801" duration="3959000" />
+      <workItem from="1750854988040" duration="7575000" />
     </task>
     <task id="LOCAL-00001" summary="Conexión de la base de datos y dependencias maven">
       <option name="closed" value="true" />
@@ -350,7 +379,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750843440214</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="tests">
+      <option name="closed" value="true" />
+      <created>1750845475094</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1750845475094</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +426,8 @@
     <MESSAGE value="Programa actualizado completado, primera fase de la version de prueba" />
     <MESSAGE value="Testing de Salas" />
     <MESSAGE value="Testing de Empleados" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing de Empleados" />
+    <MESSAGE value="tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

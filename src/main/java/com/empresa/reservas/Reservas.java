@@ -13,36 +13,37 @@ public class Reservas {
      * Muestra el menú de gestión de reservas e invoca las operaciones correspondientes.
      * @param conn conexión activa a la base de datos
      */
-    public static void mostrarMenu(Connection conn) {
-        try (Scanner scanner = new Scanner(System.in)) {
+    public static void mostrarMenu(Connection conn,Scanner scanner) {
             boolean salir = false;
 
             while (!salir) {
-                // Menú principal
                 System.out.println("\n--- Menú de gestión de reservas ---");
                 System.out.println("1. Crear reserva");
                 System.out.println("2. Listar reservas");
                 System.out.println("3. Salir");
+                System.out.println("0. Volver al menú principal");
                 System.out.print("Selecciona una opción: ");
 
                 int opcion = -1;
                 if (scanner.hasNextInt()) {
                     opcion = scanner.nextInt();
-                    scanner.nextLine(); // Limpiar buffer tras lectura de int
+                    scanner.nextLine();
                 } else {
-                    System.err.println("❌ Entrada inválida.");
-                    scanner.nextLine(); // Limpiar entrada errónea
+                    System.err.println("❌ Entrada inválida. Por favor, introduce un número.");
+                    scanner.nextLine();
                     continue;
                 }
 
-                // Llamada a la opción seleccionada
                 switch (opcion) {
                     case 1 -> crearReserva(conn, scanner);
                     case 2 -> listarReservas(conn);
-                    case 3 -> salir = true;
+                    case 0 -> {
+                        salir = true;
+                        System.out.println("👋 Volviendo al menú principal...");
+                    }
                     default -> System.err.println("❌ Opción no válida.");
                 }
-            }
+
         }
     }
 
@@ -51,7 +52,7 @@ public class Reservas {
      * @param conn conexión a la base de datos
      * @param scanner objeto para capturar entradas del usuario
      */
-    private static void crearReserva(Connection conn, Scanner scanner) {
+    public static void crearReserva(Connection conn, Scanner scanner) {
         try {
             // Solicitar datos al usuario
             System.out.print("ID de la sala: ");
@@ -115,7 +116,7 @@ public class Reservas {
      * Lista todas las reservas realizadas, mostrando los nombres de la sala y el empleado.
      * @param conn conexión activa a la base de datos
      */
-    private static void listarReservas(Connection conn) {
+    public static void listarReservas(Connection conn) {
         String sql = "SELECT r.id, s.nombre AS sala, e.nombre AS empleado, r.fecha, r.hora_inicio, r.hora_fin FROM reservas r JOIN salas s ON r.sala_id = s.id JOIN empleados e ON r.empleado_id = e.id ORDER BY r.fecha, r.hora_inicio";
 
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
