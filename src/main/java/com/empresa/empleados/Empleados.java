@@ -7,8 +7,7 @@ import java.util.Scanner;
  * CRUD completo para gestionar empleados (Create, Read, Update, Delete).
  */
 public class Empleados {
-    public static void mostrarMenu(Connection conn) {
-        try (Scanner scanner = new Scanner(System.in)) {
+    public static void mostrarMenu(Connection conn, Scanner scanner) {
             boolean salir = false;
 
             while (!salir) {
@@ -17,13 +16,13 @@ public class Empleados {
                 System.out.println("2. Listar empleados");
                 System.out.println("3. Actualizar empleado");
                 System.out.println("4. Eliminar empleado");
-                System.out.println("5. Salir");
+                System.out.println("0. Volver al menú principal");
                 System.out.print("Selecciona una opción: ");
 
                 int opcion = -1;
                 if (scanner.hasNextInt()) {
                     opcion = scanner.nextInt();
-                    scanner.nextLine(); // limpiar buffer
+                    scanner.nextLine();
                 } else {
                     System.err.println("❌ Entrada inválida. Por favor, introduce un número.");
                     scanner.nextLine();
@@ -35,13 +34,12 @@ public class Empleados {
                     case 2 -> listarEmpleados(conn);
                     case 3 -> actualizarEmpleado(conn, scanner);
                     case 4 -> eliminarEmpleado(conn, scanner);
-                    case 5 -> {
+                    case 0 -> {
                         salir = true;
-                        System.out.println("Saliendo...");
+                        System.out.println("👋 Volviendo al menú principal...");
                     }
                     default -> System.err.println("❌Opción no válida.");
                 }
-            }
         }
     }
     /**
@@ -50,7 +48,7 @@ public class Empleados {
      * @param conn    Conexión abierta a la base de datos.
      * @param scanner Scanner para leer datos de entrada.
      */
-    public static void crearEmpleado(Connection conn, Scanner scanner) {
+    public static void crearEmpleado(Connection conn, Scanner scanner){
         try {
             System.out.print("Nombre del empleado: ");
             String nombre = scanner.nextLine();
@@ -69,7 +67,6 @@ public class Empleados {
             }
         } catch (SQLException e) {
             System.err.println("❌Error al crear empleado.");
-            e.printStackTrace();
         }
     }
 

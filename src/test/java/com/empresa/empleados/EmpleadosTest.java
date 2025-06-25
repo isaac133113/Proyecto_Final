@@ -31,7 +31,6 @@ class EmpleadosTest {
         conn = mock(Connection.class);
         scanner = mock(Scanner.class);
         pstmt = mock(PreparedStatement.class);
-
         when(conn.prepareStatement(anyString())).thenReturn(pstmt);
     }
 
@@ -63,6 +62,24 @@ class EmpleadosTest {
         assertThat(stringCaptor.getAllValues().get(1), is("30"));
         assertThat(stringCaptor.getAllValues().get(2), is("Administración"));
     }
+    @Test
+    void testCrearEmpleadoFallo() throws SQLException {
+        when(scanner.nextLine())
+                .thenReturn("Ana García")
+                .thenReturn("25")
+                .thenReturn("Finanzas");
+        when(pstmt.executeUpdate()).thenThrow(new SQLException("Error en la base de datos"));
+
+        try {
+            Empleados.crearEmpleado(conn, scanner);
+        } catch (Exception e) {
+            assertThat(e.getMessage(), is("Error en la base de datos"));
+        }
+        verify(pstmt).setString(1, "Ana García");
+        verify(pstmt).setString(2, "25");
+        verify(pstmt).setString(3, "Finanzas");
+        verify(pstmt).executeUpdate();
+    }
 
     /**
      * Test para verificar el listado de empleados.
@@ -89,5 +106,4 @@ class EmpleadosTest {
         verify(rs, atLeastOnce()).next();
         verify(rs).getString("nombre");
     }
-
 }
