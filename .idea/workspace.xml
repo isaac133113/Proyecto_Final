@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="tests">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_31_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_31_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_31__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_32_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_32_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2025_16_32__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documentacion/Documentacion_Scrum_[IsaacBonetOlives].docx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {}
+}]]></component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/isaac133113/Proyecto_Final.git&quot;,
+    &quot;accountId&quot;: &quot;d78f519d-4ebf-43e6-92bf-6590a3b46fe4&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;isaac133113&quot;,
+    &quot;repository&quot;: &quot;Proyecto_Final&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2yuJKWWlTO8mdRWoPOfoW8tQWbX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.MainApp.executor": "Run",
+    "Application.ReservasSalas.executor": "Run",
+    "Application.ReservasSalasApp.executor": "Run",
+    "JUnit.All in reserva-salas.executor": "Debug",
+    "JUnit.EmpleadosTest.executor": "Run",
+    "JUnit.EmpleadosTest.testCrearEmpleado.executor": "Run",
+    "JUnit.EmpleadosTest.testCrearEmpleados.executor": "Run",
+    "JUnit.EmpleadosTest.testMostrarEmpleados.executor": "Run",
+    "JUnit.SalasTest.executor": "Run",
+    "JUnit.SalasTest.testMostrarSalas.executor": "Run",
+    "JavaClassFindUsagesOptions.isDerivedClasses": "true",
+    "JavaClassFindUsagesOptions.isFieldsUsages": "true",
+    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
+    "Maven.reserva-salas [compile].executor": "Run",
+    "Maven.reserva-salas [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "Testing",
+    "last_opened_file_path": "C:/Users/Usuari/IdeaProjects/Proyecto_Final/src/test/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/Usuari/IdeaProjects/Proyecto_Final/com.empresa.reservas/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuari\IdeaProjects\Proyecto_Final\src\test\java" />
+      <recent name="C:\Users\Usuari\IdeaProjects\Proyecto_Final" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuari\IdeaProjects\Proyecto_Final" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn compile" />
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.All in reserva-salas">
+    <configuration name="All in reserva-salas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="reserva-salas" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmpleadosTest.testCrearEmpleado" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="reserva-salas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.empresa.empleados.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.empresa.empleados" />
+      <option name="MAIN_CLASS_NAME" value="com.empresa.empleados.EmpleadosTest" />
+      <option name="METHOD_NAME" value="testCrearEmpleado" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmpleadosTest.testCrearEmpleados" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="reserva-salas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.empresa.empleados.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.empresa.empleados" />
+      <option name="MAIN_CLASS_NAME" value="com.empresa.empleados.EmpleadosTest" />
+      <option name="METHOD_NAME" value="testCrearEmpleados" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmpleadosTest.testMostrarEmpleados" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="reserva-salas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.empresa.empleados.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.empresa.empleados" />
+      <option name="MAIN_CLASS_NAME" value="com.empresa.empleados.EmpleadosTest" />
+      <option name="METHOD_NAME" value="testMostrarEmpleados" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="reserva-salas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.empresa.salas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.empresa.salas" />
+      <option name="MAIN_CLASS_NAME" value="com.empresa.salas.SalasTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="reserva-salas" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="reserva-salas" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in reserva-salas" />
+        <item itemvalue="JUnit.EmpleadosTest.testCrearEmpleado" />
+        <item itemvalue="JUnit.EmpleadosTest.testCrearEmpleados" />
+        <item itemvalue="JUnit.EmpleadosTest.testMostrarEmpleados" />
+        <item itemvalue="JUnit.SalasTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="ShelveChangesManager">
+    <option name="groupingKeys">
+      <option value="module" />
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="" />
+      <created>1750678461227</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750678461227</updated>
+      <workItem from="1750678462550" duration="982000" />
+      <workItem from="1750679467990" duration="677000" />
+      <workItem from="1750680166591" duration="8348000" />
+      <workItem from="1750690562888" duration="2307000" />
+      <workItem from="1750834584514" duration="9596000" />
+    </task>
+    <task id="LOCAL-00001" summary="Conexión de la base de datos y dependencias maven">
+      <option name="closed" value="true" />
+      <created>1750678863255</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1750678863255</updated>
+    </task>
+    <task id="LOCAL-00002" summary="CRUD reservas y menú Main">
+      <option name="closed" value="true" />
+      <created>1750683285022</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1750683285022</updated>
+    </task>
+    <task id="LOCAL-00003" summary="CRUD reservas y menú Main">
+      <option name="closed" value="true" />
+      <created>1750683552577</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1750683552577</updated>
+    </task>
+    <task id="LOCAL-00004" summary="CRUD reservas y menú Main">
+      <option name="closed" value="true" />
+      <created>1750683730727</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1750683730727</updated>
+    </task>
+    <task id="LOCAL-00005" summary="CRUD reservas y menú Main">
+      <option name="closed" value="true" />
+      <created>1750684012821</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1750684012821</updated>
+    </task>
+    <task id="LOCAL-00006" summary="CRUD reservas">
+      <option name="closed" value="true" />
+      <created>1750688841678</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1750688841678</updated>
+    </task>
+    <task id="LOCAL-00007" summary="CRUD reservas actuazlizado reserva sin conflictos">
+      <option name="closed" value="true" />
+      <created>1750689370687</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1750689370687</updated>
+    </task>
+    <task id="LOCAL-00008" summary="CRUD SALAS">
+      <option name="closed" value="true" />
+      <created>1750689794369</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1750689794369</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Main actualizado con salas">
+      <option name="closed" value="true" />
+      <created>1750692059241</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750692059241</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Programa actualizado completado, primera fase de la version de prueba">
+      <option name="closed" value="true" />
+      <created>1750692647465</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750692647465</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Testing de Salas">
+      <option name="closed" value="true" />
+      <created>1750840475957</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1750840475957</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Testing de Empleados">
+      <option name="closed" value="true" />
+      <created>1750843440214</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1750843440214</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Conexión de la base de datos y dependencias maven" />
+    <MESSAGE value="CRUD reservas y menú Main" />
+    <MESSAGE value="CRUD reservas" />
+    <MESSAGE value="CRUD reservas actuazlizado reserva sin conflictos" />
+    <MESSAGE value="CRUD SALAS" />
+    <MESSAGE value="Main actualizado con salas" />
+    <MESSAGE value="Programa actualizado completado, primera fase de la version de prueba" />
+    <MESSAGE value="Testing de Salas" />
+    <MESSAGE value="Testing de Empleados" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing de Empleados" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.NoSuchElementException" package="java.util" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
