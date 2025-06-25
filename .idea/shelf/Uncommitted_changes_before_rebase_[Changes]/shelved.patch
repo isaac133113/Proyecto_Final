@@ -1,0 +1,49 @@
+Index: SQLConnection.java
+===================================================================
+diff --git a/SQLConnection.java b/SQLConnection.java
+deleted file mode 100644
+--- a/SQLConnection.java	(revision 50fa39732edfa76b43d3068f983582133f77b46e)
++++ /dev/null	(revision 50fa39732edfa76b43d3068f983582133f77b46e)
+@@ -1,20 +0,0 @@
+-package SQLConnection;
+-
+-import java.sql.Connection;
+-import java.sql.DriverManager;
+-import java.sql.SQLException;
+-public class SQLConnection {
+-    public static void main(String[] args) {
+-        // Parámetros de conexión
+-        String url = "jdbc:mysql://localhost:3306/reservas_salas?useSSL=false&serverTimezone=UTC";
+-        String user = "root";
+-        String password = "root";
+-       
+-        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+-            System.out.println("Conexión establecida correctamente a la base de datos reservas_salas");
+-        } catch (SQLException e) {
+-            System.out.println("Error al conectar con la base de datos:");
+-            e.printStackTrace();
+-        }
+-    }
+-}
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0\r\n         http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>com.empresa</groupId>\r\n    <artifactId>reserva-salas</artifactId>\r\n    <version>1.0</version>\r\n\r\n    <properties>\r\n       \r\n        <junit-jupiter.version>5.5.2</junit-jupiter.version>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n    </properties>\r\n\r\n    <dependencies>\r\n\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter-engine</artifactId>\r\n            <version>${junit-jupiter.version}</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        \r\n\t\t<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->\r\n\t\t<dependency>\r\n\t\t    <groupId>mysql</groupId>\r\n\t\t    <artifactId>mysql-connector-java</artifactId>\r\n\t\t    <version>8.0.33</version>\r\n\t\t</dependency>\r\n\r\n    </dependencies>\r\n\r\n    <build>\r\n        <plugins>\r\n\r\n            <!-- Need at least 2.22.0 to support JUnit 5 platform -->\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-surefire-plugin</artifactId>\r\n                <version>3.0.0-M3</version>\r\n            </plugin>\r\n\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-compiler-plugin</artifactId>\r\n                <version>3.8.1</version>\r\n                <configuration>\r\n                    <source>11</source>\r\n                    <target>11</target>\r\n                </configuration>\r\n            </plugin>\r\n            \r\n            <!-- optional, for mvn site -->\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-site-plugin</artifactId>\r\n                <version>3.8.2</version>\r\n            </plugin>\r\n\r\n        </plugins>\r\n    </build>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 50fa39732edfa76b43d3068f983582133f77b46e)
++++ b/pom.xml	(date 1750680438033)
+@@ -48,8 +48,8 @@
+                 <artifactId>maven-compiler-plugin</artifactId>
+                 <version>3.8.1</version>
+                 <configuration>
+-                    <source>11</source>
+-                    <target>11</target>
++                    <source>14</source>
++                    <target>14</target>
+                 </configuration>
+             </plugin>
+             
