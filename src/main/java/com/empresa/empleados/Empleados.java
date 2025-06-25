@@ -7,7 +7,6 @@ import java.util.Scanner;
  * CRUD completo para gestionar empleados (Create, Read, Update, Delete).
  */
 public class Empleados {
-
     public static void mostrarMenu(Connection conn) {
         try (Scanner scanner = new Scanner(System.in)) {
             boolean salir = false;
@@ -27,7 +26,7 @@ public class Empleados {
                     scanner.nextLine(); // limpiar buffer
                 } else {
                     System.err.println("❌ Entrada inválida. Por favor, introduce un número.");
-                    scanner.nextLine(); // limpiar entrada errónea
+                    scanner.nextLine();
                     continue;
                 }
 
@@ -40,7 +39,7 @@ public class Empleados {
                         salir = true;
                         System.out.println("Saliendo...");
                     }
-                    default -> System.err.println("Opción no válida.");
+                    default -> System.err.println("❌Opción no válida.");
                 }
             }
         }
@@ -66,10 +65,10 @@ public class Empleados {
                 ps.setString(2, email);
                 ps.setString(3, departamento);
                 ps.executeUpdate();
-                System.out.println("Empleado creado correctamente.");
+                System.out.println("✅Empleado creado correctamente.");
             }
         } catch (SQLException e) {
-            System.err.println("Error al crear empleado.");
+            System.err.println("❌Error al crear empleado.");
             e.printStackTrace();
         }
     }
@@ -92,7 +91,7 @@ public class Empleados {
                         rs.getString("departamento"));
             }
         } catch (SQLException e) {
-            System.err.println("Error al listar empleados.");
+            System.err.println("❌Error al listar empleados.");
             e.printStackTrace();
         }
     }
@@ -123,13 +122,13 @@ public class Empleados {
                 ps.setInt(4, id);
                 int filas = ps.executeUpdate();
                 if (filas > 0) {
-                    System.out.println("Empleado actualizado correctamente.");
+                    System.out.println("✅Empleado actualizado correctamente.");
                 } else {
-                    System.out.println("No se encontró empleado con ese ID.");
+                    System.out.println("❌No se encontró empleado con ese ID.");
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error al actualizar empleado.");
+            System.err.println("❌Error al actualizar empleado.");
             e.printStackTrace();
         } catch (NumberFormatException e) {
             System.err.println("ID inválido.");
@@ -152,16 +151,18 @@ public class Empleados {
                 ps.setInt(1, id);
                 int filas = ps.executeUpdate();
                 if (filas > 0) {
-                    System.out.println("Empleado eliminado correctamente.");
+                    System.out.println("✅Empleado eliminado correctamente.");
                 } else {
-                    System.out.println("No se encontró empleado con ese ID.");
+                    System.out.println("❌No se encontró empleado con ese ID.");
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error al eliminar empleado.");
+            System.err.println("❌Error al eliminar empleado.");
             e.printStackTrace();
         } catch (NumberFormatException e) {
-            System.err.println("ID inválido.");
+            System.err.println("❌ID inválido.");
         }
     }
+
+
 }

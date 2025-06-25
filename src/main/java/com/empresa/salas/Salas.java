@@ -55,7 +55,7 @@ public class Salas {
      * @param conn conexión a la base de datos
      * @param scanner para leer la entrada del usuario
      */
-    private static void crearSala(Connection conn, Scanner scanner) {
+    static void crearSala(Connection conn, Scanner scanner) {
         try {
             System.out.print("Nombre de la sala: ");
             String nombre = scanner.nextLine();
@@ -86,7 +86,7 @@ public class Salas {
      * Lista todas las salas de la base de datos.
      * @param conn conexión a la base de datos
      */
-    private static void listarSalas(Connection conn) {
+    static void listarSalas(Connection conn) {
         String sql = "SELECT * FROM salas";
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             System.out.println("\n📋 Listado de salas:");
