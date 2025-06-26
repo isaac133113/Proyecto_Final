@@ -7,9 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="Clases modificadas y mejoradas">
+    <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="Clases modificadas y mejoradas v2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +32,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Testing" />
+        <entry key="$PROJECT_DIR$" value="Pruebas-finales-1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -104,7 +103,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "#11 on Pruebas-finales-1",
+    "git-widget-placeholder": "main",
     "ignore.preview.features.used": "true",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Usuari/IdeaProjects/Proyecto_Final/src/test/java",
@@ -270,6 +269,7 @@
       <workItem from="1750926618464" duration="5510000" />
       <workItem from="1750932143613" duration="15580000" />
       <workItem from="1750950419869" duration="954000" />
+      <workItem from="1750953476352" duration="380000" />
     </task>
     <task id="LOCAL-00001" summary="Conexión de la base de datos y dependencias maven">
       <option name="closed" value="true" />
