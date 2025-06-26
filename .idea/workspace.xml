@@ -8,20 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="Clases modificadas y mejoradas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Principal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/salas/Salas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/salas/Salas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/empleados/EmpleadosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/empleados/EmpleadosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/empleados/Empleados.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/empleados/Empleados.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/reservas/Reservas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/reservas/Reservas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/salas/Salas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/salas/Salas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/empresa/empleados/EmpleadosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/empresa/empleados/EmpleadosTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +104,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "Pruebas-finales-1",
+    "git-widget-placeholder": "#11 on Pruebas-finales-1",
     "ignore.preview.features.used": "true",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Usuari/IdeaProjects/Proyecto_Final/src/test/java",
@@ -149,7 +137,7 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.EmpleadosTest">
     <configuration name="EmpleadosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reserva-salas" />
       <extension name="coverage">
@@ -281,6 +269,7 @@
       <workItem from="1750854988040" duration="8017000" />
       <workItem from="1750926618464" duration="5510000" />
       <workItem from="1750932143613" duration="15580000" />
+      <workItem from="1750950419869" duration="954000" />
     </task>
     <task id="LOCAL-00001" summary="Conexión de la base de datos y dependencias maven">
       <option name="closed" value="true" />
