@@ -56,6 +56,6 @@ CREACIÓN DE LA BASE DE DATOS
 
 Utiliza el siguiente script SQL para crear y poblar la base de datos:
 
-Script.sql
+`Script.sql`
 
 Lo puedes encontrar en el repositorio
