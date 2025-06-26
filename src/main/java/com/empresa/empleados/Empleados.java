@@ -1,165 +1,224 @@
 package com.empresa.empleados;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.*;
 import java.util.Scanner;
 
-/**
- * CRUD completo para gestionar empleados (Create, Read, Update, Delete).
- */
 public class Empleados {
+
+    private static final Logger logger = LoggerFactory.getLogger(Empleados.class);
+
     public static void mostrarMenu(Connection conn, Scanner scanner) {
-            boolean salir = false;
+        boolean salir = false;
 
-            while (!salir) {
-                System.out.println("\n--- Menú de gestión de empleados ---");
-                System.out.println("1. Crear empleado");
-                System.out.println("2. Listar empleados");
-                System.out.println("3. Actualizar empleado");
-                System.out.println("4. Eliminar empleado");
-                System.out.println("0. Volver al menú principal");
-                System.out.print("Selecciona una opción: ");
+        while (!salir) {
+            System.out.println("\n--- Menú de gestión de empleados ---");
+            System.out.println("1. Crear empleado");
+            System.out.println("2. Listar empleados");
+            System.out.println("3. Actualizar empleado");
+            System.out.println("4. Eliminar empleado");
+            System.out.println("0. Volver al menú principal");
+            System.out.print("Selecciona una opción: ");
 
-                int opcion = -1;
-                if (scanner.hasNextInt()) {
-                    opcion = scanner.nextInt();
-                    scanner.nextLine();
-                } else {
-                    System.err.println("❌ Entrada inválida. Por favor, introduce un número.");
-                    scanner.nextLine();
-                    continue;
+            String input = scanner.nextLine();
+            int opcion;
+            try {
+                opcion = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("❌ Entrada inválida. Por favor, introduce un número.");
+                logger.warn("Entrada inválida para opción menú: {}", input);
+                continue;
+            }
+
+            switch (opcion) {
+                case 1 -> crearEmpleado(conn, scanner);
+                case 2 -> listarEmpleados(conn);
+                case 3 -> actualizarEmpleado(conn, scanner);
+                case 4 -> eliminarEmpleado(conn, scanner);
+                case 0 -> {
+                    salir = true;
+                    System.out.println("👋 Volviendo al menú principal...");
                 }
-
-                switch (opcion) {
-                    case 1 -> crearEmpleado(conn, scanner);
-                    case 2 -> listarEmpleados(conn);
-                    case 3 -> actualizarEmpleado(conn, scanner);
-                    case 4 -> eliminarEmpleado(conn, scanner);
-                    case 0 -> {
-                        salir = true;
-                        System.out.println("👋 Volviendo al menú principal...");
-                    }
-                    default -> System.err.println("❌Opción no válida.");
+                default -> {
+                    System.out.println("❌ Opción no válida.");
+                    logger.warn("Opción inválida en menú empleados: {}", opcion);
                 }
+            }
         }
     }
-    /**
-     * Método para crear un empleado en la base de datos.
-     *
-     * @param conn    Conexión abierta a la base de datos.
-     * @param scanner Scanner para leer datos de entrada.
-     */
-    public static void crearEmpleado(Connection conn, Scanner scanner){
+
+    public static void crearEmpleado(Connection conn, Scanner scanner) {
         try {
             System.out.print("Nombre del empleado: ");
-            String nombre = scanner.nextLine();
+            String nombre = scanner.nextLine().trim();
+
             System.out.print("Email: ");
-            String email = scanner.nextLine();
+            String email = scanner.nextLine().trim();
+
             System.out.print("Departamento: ");
-            String departamento = scanner.nextLine();
+            String departamento = scanner.nextLine().trim();
+
+            if (nombre.isEmpty() || email.isEmpty() || departamento.isEmpty()) {
+                System.out.println("❌ No se permiten campos vacíos al crear empleado.");
+                logger.warn("Intento de crear empleado con campos vacíos");
+                return;
+            }
 
             String sql = "INSERT INTO empleados (nombre, email, departamento) VALUES (?, ?, ?)";
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, nombre);
-                ps.setString(2, email);
-                ps.setString(3, departamento);
-                ps.executeUpdate();
-                System.out.println("✅Empleado creado correctamente.");
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, nombre);
+                pstmt.setString(2, email);
+                pstmt.setString(3, departamento);
+                int filas = pstmt.executeUpdate();
+                if (filas > 0) {
+                    System.out.println("\n✅ Empleado creado correctamente:");
+                    System.out.println("- Nombre: " + nombre);
+                    System.out.println("- Email: " + email);
+                    System.out.println("- Departamento: " + departamento);
+                } else {
+                    System.out.println("❌ No se pudo crear el empleado.");
+                    logger.warn("Insert empleado no afectó filas");
+                }
             }
         } catch (SQLException e) {
-            System.err.println("❌Error al crear empleado.");
+            System.out.println("❌ Error al crear empleado. Consulta el log para más detalles.");
+            logger.error("Error al crear empleado", e);
         }
     }
 
-    /**
-     * Método para listar todos los empleados de la base de datos.
-     *
-     * @param conn Conexión abierta a la base de datos.
-     */
     public static void listarEmpleados(Connection conn) {
         String sql = "SELECT * FROM empleados";
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            System.out.println("\nLista de empleados:");
+            System.out.println("\n📋 Lista de empleados:");
+            boolean hay = false;
             while (rs.next()) {
-                System.out.printf("ID: %d, Nombre: %s, Email: %s, Departamento: %s%n",
+                hay = true;
+                System.out.printf("ID: %d | Nombre: %s | Email: %s | Departamento: %s%n",
                         rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getString("email"),
                         rs.getString("departamento"));
             }
+            if (!hay) {
+                System.out.println("ℹ️ No hay empleados registrados.");
+            }
         } catch (SQLException e) {
-            System.err.println("❌Error al listar empleados.");
-            e.printStackTrace();
+            System.out.println("❌ Error al listar empleados.");
+            logger.error("Error al listar empleados", e);
         }
     }
 
-    /**
-     * Método para actualizar los datos de un empleado.
-     *
-     * @param conn    Conexión abierta a la base de datos.
-     * @param scanner Scanner para leer datos de entrada.
-     */
     public static void actualizarEmpleado(Connection conn, Scanner scanner) {
         try {
-            System.out.print("Introduce el ID del empleado a actualizar: ");
-            int id = Integer.parseInt(scanner.nextLine());
+            System.out.print("ID del empleado a actualizar: ");
+            String idInput = scanner.nextLine().trim();
+
+            if (!idInput.matches("\\d+")) {
+                System.out.println("❌ El ID debe ser un número entero positivo");
+                logger.warn("Intento de actualizar empleado con ID inválido: {}", idInput);
+                return;
+            }
+            int id = Integer.parseInt(idInput);
+
+            // Verificar existencia
+            String checkSql = "SELECT COUNT(*) FROM empleados WHERE id = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+                checkStmt.setInt(1, id);
+                ResultSet rs = checkStmt.executeQuery();
+                if (rs.next() && rs.getInt(1) == 0) {
+                    System.out.println("❌ No existe un empleado con el ID: " + id);
+                    logger.warn("Intento de actualizar empleado inexistente. ID: {}", id);
+                    return;
+                }
+            }
 
             System.out.print("Nuevo nombre: ");
-            String nombre = scanner.nextLine();
-            System.out.print("Nuevo email: ");
-            String email = scanner.nextLine();
-            System.out.print("Nuevo departamento: ");
-            String departamento = scanner.nextLine();
+            String nombre = scanner.nextLine().trim();
+            if (nombre.isEmpty()) {
+                System.out.println("❌ El nombre no puede estar vacío");
+                return;
+            }
 
-            String sql = "UPDATE empleados SET nombre = ?, email = ?, departamento = ? WHERE id = ?";
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, nombre);
-                ps.setString(2, email);
-                ps.setString(3, departamento);
-                ps.setInt(4, id);
-                int filas = ps.executeUpdate();
+            System.out.print("Nuevo email: ");
+            String email = scanner.nextLine().trim();
+            if (email.isEmpty()) {
+                System.out.println("❌ El email no puede estar vacío");
+                return;
+            }
+
+            System.out.print("Nuevo departamento: ");
+            String departamento = scanner.nextLine().trim();
+            if (departamento.isEmpty()) {
+                System.out.println("❌ El departamento no puede estar vacío");
+                return;
+            }
+
+            String updateSql = "UPDATE empleados SET nombre = ?, email = ?, departamento = ? WHERE id = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
+                pstmt.setString(1, nombre);
+                pstmt.setString(2, email);
+                pstmt.setString(3, departamento);
+                pstmt.setInt(4, id);
+
+                int filas = pstmt.executeUpdate();
                 if (filas > 0) {
-                    System.out.println("✅Empleado actualizado correctamente.");
-                } else {
-                    System.out.println("❌No se encontró empleado con ese ID.");
+                    System.out.println("\n✅ Empleado actualizado con éxito:");
+                    System.out.println("- Nombre: " + nombre);
+                    System.out.println("- Email: " + email);
+                    System.out.println("- Departamento: " + departamento);
                 }
             }
         } catch (SQLException e) {
-            System.err.println("❌Error al actualizar empleado.");
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.err.println("ID inválido.");
+            System.out.println("❌ Error al actualizar el empleado.");
+            logger.error("Error al actualizar empleado", e);
         }
     }
 
-    /**
-     * Método para eliminar un empleado por ID.
-     *
-     * @param conn    Conexión abierta a la base de datos.
-     * @param scanner Scanner para leer datos de entrada.
-     */
     public static void eliminarEmpleado(Connection conn, Scanner scanner) {
         try {
-            System.out.print("Introduce el ID del empleado a eliminar: ");
-            int id = Integer.parseInt(scanner.nextLine());
+            System.out.print("ID del empleado a eliminar: ");
+            String idInput = scanner.nextLine().trim();
+
+            if (!idInput.matches("\\d+")) {
+                System.out.println("❌ El ID debe ser un número entero positivo");
+                logger.warn("Intento de eliminar empleado con ID inválido: {}", idInput);
+                return;
+            }
+            int id = Integer.parseInt(idInput);
+
+            // Verificar existencia
+            String checkSql = "SELECT COUNT(*) FROM empleados WHERE id = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+                checkStmt.setInt(1, id);
+                ResultSet rs = checkStmt.executeQuery();
+                if (rs.next() && rs.getInt(1) == 0) {
+                    System.out.println("❌ No existe un empleado con el ID: " + id);
+                    logger.warn("Intento de eliminar empleado inexistente. ID: {}", id);
+                    return;
+                }
+            }
+
+            System.out.print("¿Está seguro de eliminar el empleado? (S/N): ");
+            String confirmacion = scanner.nextLine().trim();
+            if (!confirmacion.equalsIgnoreCase("S")) {
+                System.out.println("ℹ️ Operación cancelada");
+                return;
+            }
 
             String sql = "DELETE FROM empleados WHERE id = ?";
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setInt(1, id);
-                int filas = ps.executeUpdate();
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setInt(1, id);
+                int filas = pstmt.executeUpdate();
                 if (filas > 0) {
-                    System.out.println("✅Empleado eliminado correctamente.");
-                } else {
-                    System.out.println("❌No se encontró empleado con ese ID.");
+                    System.out.println("✅ Empleado eliminado con éxito.");
                 }
             }
         } catch (SQLException e) {
-            System.err.println("❌Error al eliminar empleado.");
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.err.println("❌ID inválido.");
+            System.out.println("❌ Error al eliminar empleado.");
+            logger.error("Error al eliminar empleado", e);
         }
     }
-
-
 }

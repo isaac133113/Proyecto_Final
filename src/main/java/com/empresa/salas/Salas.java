@@ -1,21 +1,17 @@
 package com.empresa.salas;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.*;
 import java.util.Scanner;
 
-/**
- * Clase que gestiona el CRUD de salas de reuniones.
- */
 public class Salas {
 
-    /**
-     * Muestra el menú principal para gestionar las salas.
-     *
-     * @param conn conexión a la base de datos
-     */
-    public static void mostrarMenu(Connection conn ,Scanner scanner) { // Modificar para recibir el scanner
-        boolean salir = false;
+    private static final Logger logger = LoggerFactory.getLogger(Salas.class);
 
+    public static void mostrarMenu(Connection conn ,Scanner scanner) {
+        boolean salir = false;
 
         while (!salir) {
             System.out.println("\n--- Menú de gestión de salas ---");
@@ -31,7 +27,7 @@ public class Salas {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
             } else {
-                System.err.println("❌ Entrada inválida. Por favor, introduce un número.");
+                System.out.println("❌ Entrada inválida. Por favor, introduce un número.");
                 scanner.nextLine();
                 continue;
             }
@@ -45,7 +41,7 @@ public class Salas {
                     salir = true;
                     System.out.println("👋 Volviendo al menú principal...");
                 }
-                default -> System.err.println("❌ Opción no válida.");
+                default -> System.out.println("❌ Opción no válida.");
             }
         }
     }
@@ -54,10 +50,10 @@ public class Salas {
         try {
             System.out.print("Nombre de la sala: ");
             String nombre = scanner.nextLine();
-            
+
             System.out.print("Capacidad: ");
             int capacidad = Integer.parseInt(scanner.nextLine());
-            
+
             System.out.print("Recursos: ");
             String recursos = scanner.nextLine();
 
@@ -65,7 +61,7 @@ public class Salas {
                 System.out.println("❌ Todos los campos son obligatorios");
                 return;
             }
-            
+
             if (capacidad <= 0) {
                 System.out.println("❌ La capacidad debe ser mayor que 0");
                 return;
@@ -76,67 +72,103 @@ public class Salas {
                 pstmt.setString(1, nombre);
                 pstmt.setInt(2, capacidad);
                 pstmt.setString(3, recursos);
-                
-                int filasAfectadas = pstmt.executeUpdate();
-                
-                if (filasAfectadas > 0) {
+
+                int filas = pstmt.executeUpdate();
+
+                if (filas > 0) {
                     System.out.println("\n✅ Sala creada exitosamente:");
                     System.out.println("- Nombre: " + nombre);
                     System.out.println("- Capacidad: " + capacidad);
                     System.out.println("- Recursos: " + recursos);
                 } else {
                     System.out.println("❌ No se pudo crear la sala");
+                    logger.warn("Insert salas no afectó filas");
                 }
             }
         } catch (SQLException e) {
-            System.out.println("❌ Error al crear la sala: " + e.getMessage());
+            System.out.println("❌ Error al crear la sala.");
+            logger.error("Error al crear la sala", e);
         } catch (NumberFormatException e) {
             System.out.println("❌ La capacidad debe ser un número válido");
+            logger.error("❌ La capacidad debe ser un número válido", e);
         }
     }
 
-    /**
-     * Lista todas las salas de la base de datos.
-     * @param conn conexión a la base de datos
-     */
-    static void listarSalas(Connection conn) {
+    public static void listarSalas(Connection conn) {
         String sql = "SELECT * FROM salas";
-        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
             System.out.println("\n📋 Listado de salas:");
+            boolean hayRegistros = false;
             while (rs.next()) {
+                hayRegistros = true;
                 System.out.printf("ID: %d | Nombre: %s | Capacidad: %d | Recursos: %s%n",
                         rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getInt("capacidad"),
                         rs.getString("recursos"));
             }
+            if (!hayRegistros) {
+                System.out.println("ℹ️ No hay salas registradas en el sistema.");
+            }
         } catch (SQLException e) {
-            System.err.println("❌ Error al leer las salas:");
-            e.printStackTrace();
+            logger.error("Error al obtener listado de salas", e);
+            System.out.println("❌ Error al leer las salas.");
         }
     }
 
-    /**
-     * Actualiza los datos de una sala existente.
-     * @param conn conexión a la base de datos
-     * @param scanner para leer la entrada del usuario
-     */
     private static void actualizarSala(Connection conn, Scanner scanner) {
         try {
             System.out.print("ID de la sala a actualizar: ");
-            int id = Integer.parseInt(scanner.nextLine());
+            String idInput = scanner.nextLine();
+
+            if (!idInput.matches("\\d+")) {
+                System.out.println("❌ El ID debe ser un número entero positivo");
+                logger.warn("Intento de actualizar sala con ID inválido: {}", idInput);
+                return;
+            }
+            int id = Integer.parseInt(idInput);
+
+            String sql = "SELECT COUNT(*) FROM salas WHERE id = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(sql)) {
+                checkStmt.setInt(1, id);
+                ResultSet rs = checkStmt.executeQuery();
+                if (rs.next() && rs.getInt(1) == 0) {
+                    System.out.println("❌ No existe una sala con el ID: " + id);
+                    logger.warn("Intento de actualizar sala inexistente. ID: {}", id);
+                    return;
+                }
+            }
 
             System.out.print("Nuevo nombre: ");
             String nombre = scanner.nextLine();
+            if (nombre.trim().isEmpty()) {
+                System.out.println("❌ El nombre no puede estar vacío");
+                return;
+            }
 
             System.out.print("Nueva capacidad: ");
-            int capacidad = Integer.parseInt(scanner.nextLine());
+            String capacidadInput = scanner.nextLine();
+            if (!capacidadInput.matches("\\d+")) {
+                System.out.println("❌ La capacidad debe ser un número entero positivo");
+                return;
+            }
+            int capacidad = Integer.parseInt(capacidadInput);
+            if (capacidad <= 0) {
+                System.out.println("❌ La capacidad debe ser mayor que 0");
+                return;
+            }
 
             System.out.print("Nuevos recursos: ");
             String recursos = scanner.nextLine();
+            if (recursos.trim().isEmpty()) {
+                System.out.println("❌ Los recursos no pueden estar vacíos");
+                return;
+            }
 
-            String sql = "UPDATE salas SET nombre = ?, capacidad = ?, recursos = ? WHERE id = ?";
-            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            String updateSql = "UPDATE salas SET nombre = ?, capacidad = ?, recursos = ? WHERE id = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
                 pstmt.setString(1, nombre);
                 pstmt.setInt(2, capacidad);
                 pstmt.setString(3, recursos);
@@ -144,28 +176,47 @@ public class Salas {
 
                 int filas = pstmt.executeUpdate();
                 if (filas > 0) {
-                    System.out.println("✅ Sala actualizada con éxito.");
-                } else {
-                    System.err.println("❌ No se encontró una sala con ese ID.");
+                    System.out.println("\n✅ Sala actualizada con éxito:");
+                    System.out.println("- Nombre: " + nombre);
+                    System.out.println("- Capacidad: " + capacidad);
+                    System.out.println("- Recursos: " + recursos);
                 }
             }
         } catch (SQLException e) {
-            System.err.println("❌ Error al actualizar la sala:");
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.err.println("❌ Entrada inválida. Debes ingresar números para ID y capacidad.");
+            logger.error("Error al actualizar la sala", e);
+            System.out.println("❌ Error al actualizar la sala.");
         }
     }
 
-    /**
-     * Elimina una sala de la base de datos.
-     * @param conn conexión a la base de datos
-     * @param scanner para leer la entrada del usuario
-     */
     private static void eliminarSala(Connection conn, Scanner scanner) {
         try {
             System.out.print("ID de la sala a eliminar: ");
-            int id = Integer.parseInt(scanner.nextLine());
+            String idInput = scanner.nextLine();
+
+            if (!idInput.matches("\\d+")) {
+                System.out.println("❌ El ID debe ser un número entero positivo");
+                logger.warn("Intento de eliminar sala con ID inválido: {}", idInput);
+                return;
+            }
+            int id = Integer.parseInt(idInput);
+
+            String checkSql = "SELECT COUNT(*) FROM salas WHERE id = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+                checkStmt.setInt(1, id);
+                ResultSet rs = checkStmt.executeQuery();
+                if (rs.next() && rs.getInt(1) == 0) {
+                    System.out.println("❌ No existe una sala con el ID: " + id);
+                    logger.warn("Intento de eliminar sala inexistente. ID: {}", id);
+                    return;
+                }
+            }
+
+            System.out.print("¿Está seguro de eliminar la sala? (S/N): ");
+            String confirmacion = scanner.nextLine();
+            if (!confirmacion.equalsIgnoreCase("S")) {
+                System.out.println("ℹ️ Operación cancelada");
+                return;
+            }
 
             String sql = "DELETE FROM salas WHERE id = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -173,16 +224,14 @@ public class Salas {
                 int filas = pstmt.executeUpdate();
                 if (filas > 0) {
                     System.out.println("✅ Sala eliminada con éxito.");
-                } else {
-                    System.err.println("❌ No se encontró una sala con ese ID.");
                 }
             }
         } catch (SQLException e) {
-            System.err.println("❌ Error al eliminar la sala:");
-            e.printStackTrace();
+            logger.error("Error al eliminar sala", e);
+            System.out.println("❌ Error al eliminar la sala.");
         } catch (NumberFormatException e) {
-            System.err.println("❌ ID inválido. Debe ser un número entero.");
+            System.out.println("❌ ID inválido. Debe ser un número entero.");
+            logger.warn("Error de formato en ID al eliminar sala", e);
         }
     }
-
 }
