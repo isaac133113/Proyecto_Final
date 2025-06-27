@@ -18,18 +18,40 @@ CARACTERÍSTICAS PRINCIPALES
 ----------------------------------------
 ESTRUCTURA DEL PROYECTO
 ----------------------------------------
-
-src/  
-└── com/  
-  └── empresa/  
-    ├── salas/          → Gestión CRUD de salas  
-    │  └── Salas.java  
-    ├── empleados/      → Gestión CRUD de empleados  
-    │  └── Empleados.java  
-    ├── reservas/       → Gestión de reservas con validación de conflictos  
-    │  └── Reservas.java  
-    └── Main.java       → Punto de entrada con menú principal  
-
+Proyecto_Final/
+├── .idea/
+├── Documentacion/
+├── logs/
+│   ├── aplicacion.2025-06-26.log
+│   └── aplicacion.log
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── empresa/
+│   │   │           ├── empleados/
+│   │   │           │   └── Empleados.java
+│   │   │           ├── reservas/
+│   │   │           │   └── Reservas.java
+│   │   │           └── salas/
+│   │   │               └── Salas.java
+│   │   └── resources/
+│   │       └── Principal.java
+│   └── test/
+│       └── java/
+│           └── com/
+│               └── empresa/
+│                   ├── empleados/
+│                   │   └── EmpleadosTest.java
+│                   ├── reservas/
+│                   │   └── ReservasTest.java
+│                   └── salas/
+│                       └── SalasTest.java
+├── target/
+├── Modelo E-R.png
+├── pom.xml
+├── README.md
+└── ScriptSQL.sql
 ----------------------------------------
 REQUISITOS
 ----------------------------------------
