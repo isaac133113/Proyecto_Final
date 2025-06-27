@@ -41,6 +41,7 @@ Proyecto_Final/
 ├── pom.xml
 ├── README.md
 └── ScriptSQL.sql
+Si no ve la estructura del proyecto adecuandamente ponga el `Readme.md` en formato "Code"
 
 ----------------------------------------
 REQUISITOS
