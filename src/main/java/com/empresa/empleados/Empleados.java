@@ -83,7 +83,7 @@ public class Empleados {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("❌ Error al crear empleado. Consulta el log para más detalles.");
+            System.out.println("❌ Error al crear empleado.");
             logger.error("Error al crear empleado", e);
         }
     }

@@ -7,8 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="Clases modificadas y mejoradas v2">
+    <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="Clases modificadas y mejoradas v3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,56 +74,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.MainApp.executor": "Run",
-    "Application.Principal.executor": "Run",
-    "Application.ReservasSalas.executor": "Run",
-    "Application.ReservasSalasApp.executor": "Run",
-    "JUnit.All in reserva-salas.executor": "Debug",
-    "JUnit.EmpleadosTest.executor": "Run",
-    "JUnit.EmpleadosTest.testCrearEmpleado.executor": "Run",
-    "JUnit.EmpleadosTest.testCrearEmpleados.executor": "Run",
-    "JUnit.EmpleadosTest.testMostrarEmpleados.executor": "Run",
-    "JUnit.ReservasTest.crearReservaConConflicto.executor": "Run",
-    "JUnit.ReservasTest.executor": "Run",
-    "JUnit.ReservasTest.listarReservas.executor": "Run",
-    "JUnit.ReservasTest.testCrearReservaSinConflicto.executor": "Run",
-    "JUnit.ReservasTest.testCrearReserva_ConConflicto.executor": "Run",
-    "JUnit.ReservasTest.testListarReservas.executor": "Run",
-    "JUnit.ReservasTest.testMostrarEmpleados.executor": "Run",
-    "JUnit.ReservasTest.testMostrarReservas.executor": "Run",
-    "JUnit.SalasTest.executor": "Run",
-    "JUnit.SalasTest.testCrearSalaConExcepcion.executor": "Run",
-    "JUnit.SalasTest.testMostrarSalas.executor": "Run",
-    "JavaClassFindUsagesOptions.isDerivedClasses": "true",
-    "JavaClassFindUsagesOptions.isFieldsUsages": "true",
-    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
-    "Maven.reserva-salas [compile].executor": "Run",
-    "Maven.reserva-salas [install].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "ignore.preview.features.used": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Usuari/IdeaProjects/Proyecto_Final/src/test/java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/Usuari/IdeaProjects/Proyecto_Final/com.empresa.reservas/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Principal.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ReservasSalas.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ReservasSalasApp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in reserva-salas.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.EmpleadosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmpleadosTest.testCrearEmpleado.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmpleadosTest.testCrearEmpleados.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmpleadosTest.testMostrarEmpleados.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservasTest.crearReservaConConflicto.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservasTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservasTest.listarReservas.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservasTest.testCrearReservaSinConflicto.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservasTest.testCrearReserva_ConConflicto.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservasTest.testListarReservas.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservasTest.testMostrarEmpleados.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReservasTest.testMostrarReservas.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SalasTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SalasTest.testCrearSalaConExcepcion.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SalasTest.testMostrarSalas.executor&quot;: &quot;Run&quot;,
+    &quot;JavaClassFindUsagesOptions.isDerivedClasses&quot;: &quot;true&quot;,
+    &quot;JavaClassFindUsagesOptions.isFieldsUsages&quot;: &quot;true&quot;,
+    &quot;JavaClassFindUsagesOptions.isMethodsUsages&quot;: &quot;true&quot;,
+    &quot;Maven.reserva-salas [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.reserva-salas [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuari/IdeaProjects/Proyecto_Final/src/test/java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Usuari/IdeaProjects/Proyecto_Final/com.empresa.reservas/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Usuari\IdeaProjects\Proyecto_Final\src\test\java" />
@@ -128,6 +131,8 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Usuari\IdeaProjects\Proyecto_Final" />
+      <recent name="C:\Users\Usuari\IdeaProjects\Proyecto_Final\src\main\resources" />
+      <recent name="C:\Users\Usuari\IdeaProjects\Proyecto_Final\.idea" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -136,7 +141,7 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EmpleadosTest">
+  <component name="RunManager" selected="JUnit.ReservasTest">
     <configuration name="EmpleadosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reserva-salas" />
       <extension name="coverage">
@@ -228,8 +233,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EmpleadosTest" />
         <item itemvalue="JUnit.ReservasTest" />
+        <item itemvalue="JUnit.EmpleadosTest" />
         <item itemvalue="JUnit.EmpleadosTest.testMostrarEmpleados" />
         <item itemvalue="JUnit.SalasTest.testCrearSalaConExcepcion" />
         <item itemvalue="JUnit.ReservasTest.testCrearReservaSinConflicto" />
@@ -269,7 +274,8 @@
       <workItem from="1750926618464" duration="5510000" />
       <workItem from="1750932143613" duration="15580000" />
       <workItem from="1750950419869" duration="954000" />
-      <workItem from="1750953476352" duration="380000" />
+      <workItem from="1750953476352" duration="696000" />
+      <workItem from="1751008020636" duration="1465000" />
     </task>
     <task id="LOCAL-00001" summary="Conexión de la base de datos y dependencias maven">
       <option name="closed" value="true" />
@@ -391,7 +397,23 @@
       <option name="project" value="LOCAL" />
       <updated>1750863648536</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Clases modificadas y mejoradas v3">
+      <option name="closed" value="true" />
+      <created>1750953978787</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1750953978787</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Clases modificadas y mejoradas v3">
+      <option name="closed" value="true" />
+      <created>1750954150149</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1750954150149</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,7 +455,8 @@
     <MESSAGE value="tests" />
     <MESSAGE value="Tests acabados" />
     <MESSAGE value="Clases modificadas y mejoradas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clases modificadas y mejoradas" />
+    <MESSAGE value="Clases modificadas y mejoradas v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clases modificadas y mejoradas v3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

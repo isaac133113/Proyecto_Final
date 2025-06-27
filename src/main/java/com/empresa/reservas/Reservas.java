@@ -22,8 +22,9 @@ public class Reservas {
             System.out.println("0. Volver al menú principal");
             System.out.print("Selecciona una opción: ");
 
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().trim();
             int opcion;
+
             try {
                 opcion = Integer.parseInt(input);
             } catch (NumberFormatException e) {
@@ -49,74 +50,105 @@ public class Reservas {
         }
     }
 
+    private static boolean existeConflictoReserva(Connection conn, int salaId, String fecha, String horaInicio, String horaFin, Integer excluirId) {
+        String sql = """
+            SELECT COUNT(*) FROM reservas
+            WHERE sala_id = ? AND fecha = ?
+            AND (hora_inicio < ? AND hora_fin > ?)""";
+
+        if (excluirId != null) {
+            sql += " AND id <> ?";
+        }
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, salaId);
+            stmt.setDate(2, Date.valueOf(fecha));
+            stmt.setTime(3, Time.valueOf(horaFin));
+            stmt.setTime(4, Time.valueOf(horaInicio));
+
+            if (excluirId != null) {
+                stmt.setInt(5, excluirId);
+            }
+
+            ResultSet rs = stmt.executeQuery();
+            return rs.next() && rs.getInt(1) > 0;
+        } catch (SQLException e) {
+            logger.error("Error verificando conflicto de reserva", e);
+            return true;
+        }
+    }
+
     public static void crearReserva(Connection conn, Scanner scanner) {
         try {
             System.out.print("ID de la sala: ");
-            String idSalaStr = scanner.nextLine().trim();
-            if (!idSalaStr.matches("\\d+")) {
-                System.out.println("❌ El ID de la sala debe ser un número entero positivo");
-                return;
-            }
-            int idSala = Integer.parseInt(idSalaStr);
+            int idSala = Integer.parseInt(scanner.nextLine().trim());
 
             System.out.print("ID del empleado: ");
-            String idEmpleadoStr = scanner.nextLine().trim();
-            if (!idEmpleadoStr.matches("\\d+")) {
-                System.out.println("❌ El ID del empleado debe ser un número entero positivo");
+            int idEmpleado = Integer.parseInt(scanner.nextLine().trim());
+
+            System.out.print("Fecha (YYYY-MM-DD): ");
+            String fecha = scanner.nextLine().trim();
+            System.out.print("Hora de inicio (HH:MM:SS): ");
+            String horaInicio = scanner.nextLine().trim();
+            System.out.print("Hora de fin (HH:MM:SS): ");
+            String horaFin = scanner.nextLine().trim();
+
+            if (existeConflictoReserva(conn, idSala, fecha, horaInicio, horaFin, null)) {
+                System.out.println("❌ Conflicto: ya existe una reserva en ese horario.");
                 return;
             }
-            int idEmpleado = Integer.parseInt(idEmpleadoStr);
 
-            System.out.print("Fecha y hora (YYYY-MM-DD HH:MM:SS): ");
-            String fechaHora = scanner.nextLine().trim();
-
-            if (fechaHora.isEmpty()) {
-                System.out.println("❌ La fecha y hora no pueden estar vacías");
-                return;
-            }
-
-            String sql = "INSERT INTO reservas (id_sala, id_empleado, fecha_hora) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO reservas (sala_id, empleado_id, fecha, hora_inicio, hora_fin) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, idSala);
                 pstmt.setInt(2, idEmpleado);
-                pstmt.setString(3, fechaHora);
+                pstmt.setDate(3, Date.valueOf(fecha));
+                pstmt.setTime(4, Time.valueOf(horaInicio));
+                pstmt.setTime(5, Time.valueOf(horaFin));
 
                 int filas = pstmt.executeUpdate();
-
                 if (filas > 0) {
                     System.out.println("\n✅ Reserva creada exitosamente:");
                     System.out.println("- ID Sala: " + idSala);
                     System.out.println("- ID Empleado: " + idEmpleado);
-                    System.out.println("- Fecha y hora: " + fechaHora);
+                    System.out.println("- Fecha: " + fecha);
+                    System.out.println("- Hora inicio: " + horaInicio + " | Hora fin: " + horaFin);
                 } else {
-                    System.out.println("❌ No se pudo crear la reserva");
+                    System.out.println("❌ No se pudo crear la reserva.");
                     logger.warn("Insert reservas no afectó filas");
                 }
             }
-        } catch (SQLException e) {
-            System.out.println("❌ Error al crear la reserva.");
+        } catch (SQLException | IllegalArgumentException e) {
             logger.error("Error al crear la reserva", e);
+            System.out.println("❌ Error al crear la reserva.");
         }
     }
 
     public static void listarReservas(Connection conn) {
-        String sql = "SELECT r.id, r.fecha_hora, s.nombre AS sala_nombre, e.nombre AS empleado_nombre " +
-                "FROM reservas r " +
-                "JOIN salas s ON r.id_sala = s.id " +
-                "JOIN empleados e ON r.id_empleado = e.id";
+        String sql = """
+            SELECT r.id, r.fecha, r.hora_inicio, r.hora_fin, s.nombre AS sala_nombre, e.nombre AS empleado_nombre
+            FROM reservas r
+            JOIN salas s ON r.sala_id = s.id
+            JOIN empleados e ON r.empleado_id = e.id
+        """;
+
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             System.out.println("\n📋 Listado de reservas:");
             boolean hayRegistros = false;
+
             while (rs.next()) {
                 hayRegistros = true;
-                System.out.printf("ID: %d | Sala: %s | Empleado: %s | Fecha y hora: %s%n",
+                System.out.printf("ID: %d | Sala: %s | Empleado: %s | Fecha: %s | %s-%s%n",
                         rs.getInt("id"),
                         rs.getString("sala_nombre"),
                         rs.getString("empleado_nombre"),
-                        rs.getString("fecha_hora"));
+                        rs.getDate("fecha"),
+                        rs.getTime("hora_inicio"),
+                        rs.getTime("hora_fin"));
             }
+
             if (!hayRegistros) {
                 System.out.println("ℹ️ No hay reservas registradas en el sistema.");
             }
@@ -129,14 +161,7 @@ public class Reservas {
     public static void actualizarReserva(Connection conn, Scanner scanner) {
         try {
             System.out.print("ID de la reserva a actualizar: ");
-            String idStr = scanner.nextLine().trim();
-
-            if (!idStr.matches("\\d+")) {
-                System.out.println("❌ El ID debe ser un número entero positivo");
-                logger.warn("Intento de actualizar reserva con ID inválido: {}", idStr);
-                return;
-            }
-            int id = Integer.parseInt(idStr);
+            int id = Integer.parseInt(scanner.nextLine().trim());
 
             String checkSql = "SELECT COUNT(*) FROM reservas WHERE id = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
@@ -144,53 +169,59 @@ public class Reservas {
                 ResultSet rs = checkStmt.executeQuery();
                 if (rs.next() && rs.getInt(1) == 0) {
                     System.out.println("❌ No existe una reserva con el ID: " + id);
-                    logger.warn("Intento de actualizar reserva inexistente. ID: {}", id);
                     return;
                 }
             }
 
-            System.out.print("Nuevo ID de la sala: ");
-            String idSalaStr = scanner.nextLine().trim();
-            if (!idSalaStr.matches("\\d+")) {
-                System.out.println("❌ El ID de la sala debe ser un número entero positivo");
-                return;
+            System.out.print("Nuevo ID de sala: ");
+            int salaId = Integer.parseInt(scanner.nextLine().trim());
+
+            String checkSala = "SELECT COUNT(*) FROM salas WHERE id = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(checkSala)) {
+                checkStmt.setInt(1, salaId);
+                ResultSet rs = checkStmt.executeQuery();
+                if (rs.next() && rs.getInt(1) == 0) {
+                    System.out.println("❌ La sala con ID " + salaId + " no existe.");
+                    return;
+                }
             }
-            int idSala = Integer.parseInt(idSalaStr);
 
             System.out.print("Nuevo ID del empleado: ");
-            String idEmpleadoStr = scanner.nextLine().trim();
-            if (!idEmpleadoStr.matches("\\d+")) {
-                System.out.println("❌ El ID del empleado debe ser un número entero positivo");
+            int empleadoId = Integer.parseInt(scanner.nextLine().trim());
+
+            System.out.print("Nueva fecha (YYYY-MM-DD): ");
+            String fecha = scanner.nextLine().trim();
+            System.out.print("Nueva hora inicio (HH:MM:SS): ");
+            String horaInicio = scanner.nextLine().trim();
+            System.out.print("Nueva hora fin (HH:MM:SS): ");
+            String horaFin = scanner.nextLine().trim();
+
+            if (existeConflictoReserva(conn, salaId, fecha, horaInicio, horaFin, id)) {
+                System.out.println("❌ Conflicto de horario. No se puede actualizar.");
                 return;
             }
-            int idEmpleado = Integer.parseInt(idEmpleadoStr);
 
-            System.out.print("Nueva fecha y hora (YYYY-MM-DD HH:MM:SS): ");
-            String fechaHora = scanner.nextLine().trim();
-            if (fechaHora.isEmpty()) {
-                System.out.println("❌ La fecha y hora no pueden estar vacías");
-                return;
-            }
-
-            String updateSql = "UPDATE reservas SET id_sala = ?, id_empleado = ?, fecha_hora = ? WHERE id = ?";
+            String updateSql = "UPDATE reservas SET sala_id = ?, empleado_id = ?, fecha = ?, hora_inicio = ?, hora_fin = ? WHERE id = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
-                pstmt.setInt(1, idSala);
-                pstmt.setInt(2, idEmpleado);
-                pstmt.setString(3, fechaHora);
-                pstmt.setInt(4, id);
+                pstmt.setInt(1, salaId);
+                pstmt.setInt(2, empleadoId);
+                pstmt.setDate(3, Date.valueOf(fecha));
+                pstmt.setTime(4, Time.valueOf(horaInicio));
+                pstmt.setTime(5, Time.valueOf(horaFin));
+                pstmt.setInt(6, id);
 
                 int filas = pstmt.executeUpdate();
                 if (filas > 0) {
                     System.out.println("\n✅ Reserva actualizada con éxito:");
-                    System.out.println("- ID Sala: " + idSala);
-                    System.out.println("- ID Empleado: " + idEmpleado);
-                    System.out.println("- Fecha y hora: " + fechaHora);
+                    System.out.println("- ID Sala: " + salaId);
+                    System.out.println("- ID Empleado: " + empleadoId);
+                    System.out.println("- Fecha: " + fecha);
+                    System.out.println("- Hora inicio: " + horaInicio + " | Hora fin: " + horaFin);
                 } else {
-                    System.out.println("❌ No se pudo actualizar la reserva");
-                    logger.warn("Update reservas no afectó filas para ID: {}", id);
+                    System.out.println("❌ No se pudo actualizar la reserva.");
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IllegalArgumentException e) {
             logger.error("Error al actualizar la reserva", e);
             System.out.println("❌ Error al actualizar la reserva.");
         }
@@ -199,14 +230,7 @@ public class Reservas {
     public static void eliminarReserva(Connection conn, Scanner scanner) {
         try {
             System.out.print("ID de la reserva a eliminar: ");
-            String idInput = scanner.nextLine().trim();
-
-            if (!idInput.matches("\\d+")) {
-                System.out.println("❌ El ID debe ser un número entero positivo");
-                logger.warn("Intento de eliminar reserva con ID inválido: {}", idInput);
-                return;
-            }
-            int id = Integer.parseInt(idInput);
+            int id = Integer.parseInt(scanner.nextLine().trim());
 
             String checkSql = "SELECT COUNT(*) FROM reservas WHERE id = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
@@ -214,7 +238,6 @@ public class Reservas {
                 ResultSet rs = checkStmt.executeQuery();
                 if (rs.next() && rs.getInt(1) == 0) {
                     System.out.println("❌ No existe una reserva con el ID: " + id);
-                    logger.warn("Intento de eliminar reserva inexistente. ID: {}", id);
                     return;
                 }
             }
@@ -222,7 +245,7 @@ public class Reservas {
             System.out.print("¿Está seguro de eliminar la reserva? (S/N): ");
             String confirmacion = scanner.nextLine().trim();
             if (!confirmacion.equalsIgnoreCase("S")) {
-                System.out.println("ℹ️ Operación cancelada");
+                System.out.println("ℹ️ Operación cancelada.");
                 return;
             }
 
@@ -234,12 +257,11 @@ public class Reservas {
                     System.out.println("✅ Reserva eliminada con éxito.");
                 } else {
                     System.out.println("❌ No se pudo eliminar la reserva.");
-                    logger.warn("Delete reserva no afectó filas para ID: {}", id);
                 }
             }
         } catch (SQLException e) {
-            System.out.println("❌ Error al eliminar la reserva.");
             logger.error("Error al eliminar reserva", e);
+            System.out.println("❌ Error al eliminar la reserva.");
         }
     }
 }
