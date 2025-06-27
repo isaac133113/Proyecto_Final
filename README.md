@@ -10,13 +10,13 @@ automática.
 ───────────────────────────────
  CARACTERÍSTICAS PRINCIPALES
 ───────────────────────────────
-✔ CRUD completo para salas de reuniones
-✔ CRUD completo para empleados
-✔ CRUD de reservas con control de disponibilidad
-✔ Validación automática de conflictos de horario
-✔ Interfaz de consola interactiva
-✔ Organización modular con paquetes Java
-✔ Conexión a base de datos MySQL
+- CRUD completo para salas de reuniones
+- CRUD completo para empleados
+- CRUD de reservas con control de disponibilidad
+- Validación automática de conflictos de horario
+- Interfaz de consola interactiva
+- Organización modular con paquetes Java
+- Conexión a base de datos MySQL
 
 ──────────────────────────────
 ESTRUCTURA DEL PROYECTO
