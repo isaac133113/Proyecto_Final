@@ -21,6 +21,7 @@ automática.
 ──────────────────────────────
 ESTRUCTURA DEL PROYECTO
 ──────────────────────────────
+
 Proyecto_Final/
 ├── .idea/
 ├── Documentacion/
