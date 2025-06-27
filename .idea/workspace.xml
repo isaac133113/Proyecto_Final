@@ -7,15 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="Clases modificadas y mejoradas v3">
+    <list default="true" id="a461b572-16e0-44b4-acc7-444670f01c35" name="Changes" comment="Versión final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/salas/Salas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/salas/Salas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/empleados/EmpleadosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/empleados/EmpleadosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/empleados/Empleados.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/empleados/Empleados.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/reservas/Reservas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/reservas/Reservas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/empresa/empleados/EmpleadosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/empresa/empleados/EmpleadosTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +140,7 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.EmpleadosTest">
     <configuration name="EmpleadosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reserva-salas" />
       <extension name="coverage">
@@ -417,7 +412,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750954150149</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Versión final">
+      <option name="closed" value="true" />
+      <created>1751016424506</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1751016424506</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,7 +463,8 @@
     <MESSAGE value="Tests acabados" />
     <MESSAGE value="Clases modificadas y mejoradas" />
     <MESSAGE value="Clases modificadas y mejoradas v3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clases modificadas y mejoradas v3" />
+    <MESSAGE value="Versión final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versión final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

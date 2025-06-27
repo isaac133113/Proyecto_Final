@@ -46,6 +46,8 @@ public class Principal {
                     case 1 -> Reservas.mostrarMenu(conn, scanner);
                     case 2 -> Empleados.mostrarMenu(conn, scanner);
                     case 3 -> Salas.mostrarMenu(conn, scanner);
+
+
                     case 0 -> { salir = true;
                         System.out.println("👋 Saliendo...");
                     }
