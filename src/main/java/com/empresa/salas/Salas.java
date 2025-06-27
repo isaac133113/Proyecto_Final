@@ -6,11 +6,22 @@ import org.slf4j.LoggerFactory;
 import java.sql.*;
 import java.util.Scanner;
 
+/**
+ * Clase que gestiona las operaciones CRUD para salas.
+ * Permite crear, listar, actualizar y eliminar salas a través de una interfaz de consola.
+ */
 public class Salas {
 
     private static final Logger logger = LoggerFactory.getLogger(Salas.class);
 
-    public static void mostrarMenu(Connection conn ,Scanner scanner) {
+    /**
+     * Muestra el menú principal de gestión de salas.
+     * Permite seleccionar acciones interactivas desde consola.
+     *
+     * @param conn    Conexión activa a la base de datos
+     * @param scanner Scanner para capturar la entrada del usuario
+     */
+    public static void mostrarMenu(Connection conn, Scanner scanner) {
         boolean salir = false;
 
         while (!salir) {
@@ -25,10 +36,10 @@ public class Salas {
             int opcion = -1;
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
-                scanner.nextLine();
+                scanner.nextLine(); // limpiar el buffer
             } else {
                 System.out.println("❌ Entrada inválida. Por favor, introduce un número.");
-                scanner.nextLine();
+                scanner.nextLine(); // descartar entrada inválida
                 continue;
             }
 
@@ -46,6 +57,12 @@ public class Salas {
         }
     }
 
+    /**
+     * Crea una nueva sala en la base de datos.
+     *
+     * @param conn    Conexión activa a la base de datos
+     * @param scanner Scanner para capturar la entrada del usuario
+     */
     public static void crearSala(Connection conn, Scanner scanner) {
         try {
             System.out.print("Nombre de la sala: ");
@@ -57,6 +74,7 @@ public class Salas {
             System.out.print("Recursos: ");
             String recursos = scanner.nextLine();
 
+            // Validaciones básicas
             if (nombre.trim().isEmpty() || recursos.trim().isEmpty()) {
                 System.out.println("❌ Todos los campos son obligatorios");
                 return;
@@ -67,6 +85,7 @@ public class Salas {
                 return;
             }
 
+            // Inserción en la base de datos
             String sql = "INSERT INTO salas (nombre, capacidad, recursos) VALUES (?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, nombre);
@@ -94,6 +113,11 @@ public class Salas {
         }
     }
 
+    /**
+     * Lista todas las salas registradas en la base de datos.
+     *
+     * @param conn Conexión activa a la base de datos
+     */
     public static void listarSalas(Connection conn) {
         String sql = "SELECT * FROM salas";
         try (Statement stmt = conn.createStatement();
@@ -101,6 +125,8 @@ public class Salas {
 
             System.out.println("\n📋 Listado de salas:");
             boolean hayRegistros = false;
+
+            // Recorre los resultados
             while (rs.next()) {
                 hayRegistros = true;
                 System.out.printf("ID: %d | Nombre: %s | Capacidad: %d | Recursos: %s%n",
@@ -109,6 +135,7 @@ public class Salas {
                         rs.getInt("capacidad"),
                         rs.getString("recursos"));
             }
+
             if (!hayRegistros) {
                 System.out.println("ℹ️ No hay salas registradas en el sistema.");
             }
@@ -118,6 +145,12 @@ public class Salas {
         }
     }
 
+    /**
+     * Actualiza la información de una sala existente.
+     *
+     * @param conn    Conexión activa a la base de datos
+     * @param scanner Scanner para capturar la entrada del usuario
+     */
     private static void actualizarSala(Connection conn, Scanner scanner) {
         try {
             System.out.print("ID de la sala a actualizar: ");
@@ -130,6 +163,7 @@ public class Salas {
             }
             int id = Integer.parseInt(idInput);
 
+            // Verifica si la sala existe
             String sql = "SELECT COUNT(*) FROM salas WHERE id = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(sql)) {
                 checkStmt.setInt(1, id);
@@ -141,6 +175,7 @@ public class Salas {
                 }
             }
 
+            // Solicita nuevos datos
             System.out.print("Nuevo nombre: ");
             String nombre = scanner.nextLine();
             if (nombre.trim().isEmpty()) {
@@ -167,6 +202,7 @@ public class Salas {
                 return;
             }
 
+            // Ejecuta la actualización
             String updateSql = "UPDATE salas SET nombre = ?, capacidad = ?, recursos = ? WHERE id = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
                 pstmt.setString(1, nombre);
@@ -188,6 +224,12 @@ public class Salas {
         }
     }
 
+    /**
+     * Elimina una sala de la base de datos tras confirmación del usuario.
+     *
+     * @param conn    Conexión activa a la base de datos
+     * @param scanner Scanner para capturar la entrada del usuario
+     */
     private static void eliminarSala(Connection conn, Scanner scanner) {
         try {
             System.out.print("ID de la sala a eliminar: ");
@@ -200,6 +242,7 @@ public class Salas {
             }
             int id = Integer.parseInt(idInput);
 
+            // Verifica si la sala existe
             String checkSql = "SELECT COUNT(*) FROM salas WHERE id = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
                 checkStmt.setInt(1, id);
@@ -218,6 +261,7 @@ public class Salas {
                 return;
             }
 
+            // Ejecuta eliminación
             String sql = "DELETE FROM salas WHERE id = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, id);

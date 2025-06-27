@@ -6,10 +6,19 @@ import org.slf4j.LoggerFactory;
 import java.sql.*;
 import java.util.Scanner;
 
+/**
+ * Clase para gestionar operaciones CRUD de empleados.
+ */
 public class Empleados {
 
     private static final Logger logger = LoggerFactory.getLogger(Empleados.class);
 
+    /**
+     * Muestra el menú principal para gestión de empleados y gestiona las opciones seleccionadas.
+     *
+     * @param conn    Conexión a la base de datos.
+     * @param scanner Scanner para leer entrada del usuario.
+     */
     public static void mostrarMenu(Connection conn, Scanner scanner) {
         boolean salir = false;
 
@@ -49,6 +58,31 @@ public class Empleados {
         }
     }
 
+    /**
+     * Solicita y valida la entrada de un número entero positivo desde el Scanner.
+     * Repite la petición hasta que se introduce un valor válido.
+     *
+     * @param scanner Scanner para leer la entrada.
+     * @param mensaje Mensaje para mostrar al usuario.
+     * @return Número entero positivo ingresado.
+     */
+    public static int leerEntero(Scanner scanner, String mensaje) {
+        while (true) {
+            System.out.print(mensaje);
+            String input = scanner.nextLine().trim();
+            if (input.matches("\\d+")) {
+                return Integer.parseInt(input);
+            }
+            System.out.println("❌ Entrada inválida. Por favor, introduce un número entero positivo.");
+        }
+    }
+
+    /**
+     * Crea un nuevo empleado solicitando datos por consola y guardándolos en la base de datos.
+     *
+     * @param conn    Conexión a la base de datos.
+     * @param scanner Scanner para leer entrada del usuario.
+     */
     public static void crearEmpleado(Connection conn, Scanner scanner) {
         try {
             System.out.print("Nombre del empleado: ");
@@ -88,6 +122,11 @@ public class Empleados {
         }
     }
 
+    /**
+     * Lista todos los empleados guardados en la base de datos mostrando sus datos por consola.
+     *
+     * @param conn Conexión a la base de datos.
+     */
     public static void listarEmpleados(Connection conn) {
         String sql = "SELECT * FROM empleados";
         try (Statement stmt = conn.createStatement();
@@ -111,19 +150,19 @@ public class Empleados {
         }
     }
 
+    /**
+     * Actualiza los datos de un empleado identificado por su ID.
+     * Solicita los nuevos valores y realiza las validaciones pertinentes.
+     *
+     * @param conn    Conexión a la base de datos.
+     * @param scanner Scanner para leer entrada del usuario.
+     */
     public static void actualizarEmpleado(Connection conn, Scanner scanner) {
         try {
-            System.out.print("ID del empleado a actualizar: ");
-            String idInput = scanner.nextLine().trim();
+            // Leer ID con validación
+            int id = leerEntero(scanner, "ID del empleado a actualizar: ");
 
-            if (!idInput.matches("\\d+")) {
-                System.out.println("❌ El ID debe ser un número entero positivo");
-                logger.warn("Intento de actualizar empleado con ID inválido: {}", idInput);
-                return;
-            }
-            int id = Integer.parseInt(idInput);
-
-            // Verificar existencia
+            // Verificar que el empleado exista
             String checkSql = "SELECT COUNT(*) FROM empleados WHERE id = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
                 checkStmt.setInt(1, id);
@@ -135,6 +174,7 @@ public class Empleados {
                 }
             }
 
+            // Leer nuevos datos
             System.out.print("Nuevo nombre: ");
             String nombre = scanner.nextLine().trim();
             if (nombre.isEmpty()) {
@@ -156,6 +196,7 @@ public class Empleados {
                 return;
             }
 
+            // Ejecutar update
             String updateSql = "UPDATE empleados SET nombre = ?, email = ?, departamento = ? WHERE id = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
                 pstmt.setString(1, nombre);
@@ -177,19 +218,18 @@ public class Empleados {
         }
     }
 
+    /**
+     * Elimina un empleado de la base de datos identificado por su ID tras confirmación del usuario.
+     *
+     * @param conn    Conexión a la base de datos.
+     * @param scanner Scanner para leer entrada del usuario.
+     */
     public static void eliminarEmpleado(Connection conn, Scanner scanner) {
         try {
-            System.out.print("ID del empleado a eliminar: ");
-            String idInput = scanner.nextLine().trim();
+            // Leer ID con validación
+            int id = leerEntero(scanner, "ID del empleado a eliminar: ");
 
-            if (!idInput.matches("\\d+")) {
-                System.out.println("❌ El ID debe ser un número entero positivo");
-                logger.warn("Intento de eliminar empleado con ID inválido: {}", idInput);
-                return;
-            }
-            int id = Integer.parseInt(idInput);
-
-            // Verificar existencia
+            // Verificar que el empleado exista
             String checkSql = "SELECT COUNT(*) FROM empleados WHERE id = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
                 checkStmt.setInt(1, id);
@@ -201,6 +241,7 @@ public class Empleados {
                 }
             }
 
+            // Confirmación
             System.out.print("¿Está seguro de eliminar el empleado? (S/N): ");
             String confirmacion = scanner.nextLine().trim();
             if (!confirmacion.equalsIgnoreCase("S")) {
@@ -208,6 +249,7 @@ public class Empleados {
                 return;
             }
 
+            // Ejecutar eliminación
             String sql = "DELETE FROM empleados WHERE id = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, id);

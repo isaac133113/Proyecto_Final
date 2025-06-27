@@ -11,7 +11,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/empleados/Empleados.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/reservas/Reservas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/empresa/salas/Salas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/empresa/salas/Salas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/empleados/EmpleadosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/empleados/EmpleadosTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/empresa/reservas/ReservasTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/empleados/Empleados.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/empleados/Empleados.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/empresa/reservas/Reservas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/empresa/reservas/Reservas.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +145,7 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ReservasTest">
+  <component name="RunManager">
     <configuration name="EmpleadosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reserva-salas" />
       <extension name="coverage">
@@ -233,10 +237,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReservasTest" />
-        <item itemvalue="JUnit.EmpleadosTest" />
-        <item itemvalue="JUnit.EmpleadosTest.testMostrarEmpleados" />
         <item itemvalue="JUnit.SalasTest.testCrearSalaConExcepcion" />
+        <item itemvalue="JUnit.EmpleadosTest" />
+        <item itemvalue="JUnit.ReservasTest" />
+        <item itemvalue="JUnit.EmpleadosTest.testMostrarEmpleados" />
         <item itemvalue="JUnit.ReservasTest.testCrearReservaSinConflicto" />
       </list>
     </recent_temporary>
