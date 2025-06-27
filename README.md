@@ -19,16 +19,30 @@ CARACTERÍSTICAS PRINCIPALES
 ESTRUCTURA DEL PROYECTO
 ----------------------------------------
 
-src/  
-└── com/  
-  └── empresa/  
-    ├── salas/          → Gestión CRUD de salas  
-    │  └── Salas.java  
-    ├── empleados/      → Gestión CRUD de empleados  
-    │  └── Empleados.java  
-    ├── reservas/       → Gestión de reservas con validación de conflictos  
-    │  └── Reservas.java  
-    └── Main.java       → Punto de entrada con menú principal  
+Proyecto_Final/
+├── .idea/
+├── Documentacion/
+├── logs/
+│   ├── aplicacion.2025-06-26.log
+│   └── aplicacion.log
+├── src/
+│   ├── main/java/com/empresa/
+│   │   ├── empleados/Empleados.java
+│   │   ├── reservas/Reservas.java
+│   │   └── salas/Salas.java
+│   └── resources/Principal.java
+│
+│   └── test/java/com/empresa/
+│       ├── empleados/EmpleadosTest.java
+│       ├── reservas/ReservasTest.java
+│       └── salas/SalasTest.java
+├── target/
+├── Modelo E-R.png
+├── pom.xml
+├── README.md
+└── ScriptSQL.sql
+
+Si no ve la estructura del proyecto adecuandamente ponga el `Readme.md` en formato "Code"
 
 ----------------------------------------
 REQUISITOS
@@ -41,29 +55,40 @@ REQUISITOS
 - Conexión a base de datos local: localhost:3306  
 
 ----------------------------------------
-INSTRUCCIONES PARA EJECUTAR EL PROYECTO
+INSTRUCCIONES DE EJECUCIÓN
 ----------------------------------------
+1. Entra en el repositorio del GitHub y descarga el proyecto dandole a "Code " y "Download ZIP"
+2. Abre IntelliJ IDEA o Eclipse
+3. Importa el proyecto como Java (estructura de paquetes)
+4. Asegúrate de incluir el driver JDBC de MySQL en el classpath
+5. Configura la conexión JDBC (usuario, contraseña, URL) en el código
+6. Ejecuta Principal.java para iniciar desde la consola
 
-1. Abre IntelliJ IDEA o Eclipse  
-2. Importa el proyecto como un proyecto Java con estructura de paquetes  
-3. Asegúrate de tener el driver JDBC de MySQL agregado al classpath  
-4. Configura tu conexión a la base de datos en el código si es necesario (usuario, contraseña, URL JDBC)  
-5. Ejecuta `Principal.java` para iniciar el sistema desde la consola  
+----------------------------------------
+IMPORTAR EN INTELLIJ IDEA
+----------------------------------------
+1. Abre IntelliJ IDEA
+2. Ve a File > Open y selecciona la carpeta del proyecto
+3. Si usas Maven (pom.xml), selecciona "Import Project" y elige "Maven"
+4. Asegúrate de que Java 17 esté configurado como JDK
+5. Permite que IntelliJ descargue las dependencias automáticamente
+6. Ejecuta Principal.java desde resources
+
+----------------------------------------
+IMPORTAR EN ECLIPSE
+----------------------------------------
+1. Abre Eclipse
+2. Ve a File > Import > "Existing Projects into Workspace" o "Maven > Existing Maven Projects"
+3. Selecciona el directorio del proyecto y completa el asistente
+4. Configura Java 17 y el driver JDBC en el classpath
+5. Ejecuta Principal.java
 
 ----------------------------------------
 CREACIÓN DE LA BASE DE DATOS
 ----------------------------------------
-
-Utiliza el siguiente script SQL para crear y poblar la base de datos:
-
-Lo puedes encontrar en el repositorio `Script.sql`
 1. Abre MySQL Workbench como administrador
-2. Una vez dentro entra en una conexión en el menú de MySQL Connections
-3. Seleccione la conexión o crea una conexión si no esta creada
-4. Una vez dentro la conexión entra en "File" y selecciona "Run SQL Script"
-5. Seleccione `Script.sql` y presiona "Run" o ejecutar
-6. Si  los dos últimos pasos no funcionan entra en "File" y selecciona "New Query Tab"
-7. Debe ir a la ubicación donde se encuentra guardado `Script.sql`
-8. Abre el archivo y se le abrirá el menú de MySQL Workbench con el archivo `Script.sql`
-9. Pulse encima del nombre de `Script.sql`, seleccione "Database" y pulse en "Connect to Database"
-10. Se le abrirá un menú, pulse "ok" y ya tendrá la base de datos creada con las tablas, columnas y datos de prueba necesarios 
+2. Conéctate a tu base de datos local
+3. Ve a File > Run SQL Script y selecciona ScriptSQL.sql
+4. Si falla, abre una "New Query Tab" y carga ScriptSQL.sql manualmente
+5. Ejecuta el script para crear tablas y datos de prueba
+6. Conéctate con "Database > Connect to Database" y presiona OK

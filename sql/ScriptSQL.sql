@@ -3,30 +3,28 @@ USE reservas_salas;
 DROP TABLE IF EXISTS reservas;
 DROP TABLE IF EXISTS salas;
 DROP TABLE IF EXISTS empleados;
-
 CREATE TABLE empleados (
-    id INT PRIMARY KEY,
+    id INT  auto_increment PRIMARY KEY,
     nombre VARCHAR(100),
     email VARCHAR(100) UNIQUE,
     departamento VARCHAR(100)
 );
 
 CREATE TABLE salas (
-    id INT PRIMARY KEY,
+    id INT NOT NULL auto_increment PRIMARY KEY,
     nombre VARCHAR(100),
     capacidad INT,
     recursos TEXT
 );
-
 CREATE TABLE reservas (
-    id INT PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     empleado_id INT,
     sala_id INT,
     fecha DATE,
     hora_inicio TIME,
     hora_fin TIME,
-    FOREIGN KEY (empleado_id) REFERENCES empleados(id),
-    FOREIGN KEY (sala_id) REFERENCES salas(id)
+    FOREIGN KEY (empleado_id) REFERENCES empleados(id) ON DELETE CASCADE,
+    FOREIGN KEY (sala_id) REFERENCES salas(id)ON DELETE CASCADE
 );
 
 INSERT INTO empleados (id, nombre, email, departamento) VALUES
