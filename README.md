@@ -57,12 +57,12 @@ REQUISITOS
 ----------------------------------------
 INSTRUCCIONES DE EJECUCIÓN
 ----------------------------------------
-
-1. Abre IntelliJ IDEA o Eclipse
-2. Importa el proyecto como Java (estructura de paquetes)
-3. Asegúrate de incluir el driver JDBC de MySQL en el classpath
-4. Configura la conexión JDBC (usuario, contraseña, URL) en el código
-5. Ejecuta Principal.java para iniciar desde la consola
+1. Entra en el repositorio del GitHub y descarga el proyecto dandole a "Code " y "Download ZIP"
+2. Abre IntelliJ IDEA o Eclipse
+3. Importa el proyecto como Java (estructura de paquetes)
+4. Asegúrate de incluir el driver JDBC de MySQL en el classpath
+5. Configura la conexión JDBC (usuario, contraseña, URL) en el código
+6. Ejecuta Principal.java para iniciar desde la consola
 
 ----------------------------------------
 IMPORTAR EN INTELLIJ IDEA
