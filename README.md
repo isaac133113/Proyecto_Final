@@ -1,6 +1,6 @@
 
 ╔════════════════════════════════════════════════════════════════════╗
-║     SISTEMA DE GESTIÓN DE SALAS DE REUNIONES - JAVA & MYSQL       ║
+║     SISTEMA DE GESTIÓN DE SALAS DE REUNIONES - JAVA & MYSQL        ║
 ╚════════════════════════════════════════════════════════════════════╝
 
 Este proyecto permite gestionar salas de reuniones, empleados y reservas 
@@ -43,6 +43,7 @@ Proyecto_Final/
 ├── pom.xml
 ├── README.md
 └── ScriptSQL.sql
+Si no ve bien la estructura del proyecto ponla en formato "Code"
 
 ──────────────────────────────
 REQUISITOS DEL SISTEMA
